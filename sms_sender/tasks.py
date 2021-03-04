@@ -21,6 +21,6 @@ def send_info(
     send_mail(
         "Добро пожаловать в IT ACADEMY!",
         message, settings.EMAIL_HOST_USER,
-        ['nursultandev@gmail.com'],
+        ['nursultandev@gmail.com', 'megabmx4477@gmail.com'],
         fail_silently=False
     )
