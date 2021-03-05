@@ -7,26 +7,24 @@ phone_number_regex = RegexValidator(
         "Телефон должен быть в формате +996[код][номер]"
     )
 )
+SERVICES = (
+    ('Онлайн консультация юриста', 'Онлайн консультация юриста'),
+    ('Онлайн консультация бухгалтера', 'Онлайн консультация бухгалтера'),
+)
 
 
 class Person(models.Model):
-    first_name = models.CharField(
+    fio = models.CharField(
         max_length=255,
+        verbose_name='ФИО',
         db_index=True,
         blank=True, null=True,
-        verbose_name='Имя'
     )
-    last_name = models.CharField(
+    service = models.CharField(
         max_length=255,
-        db_index=True,
+        verbose_name='Услуга',
+        choices=SERVICES,
         blank=True, null=True,
-        verbose_name='Фамилия'
-    )
-    middle_name = models.CharField(
-        max_length=255,
-        db_index=True,
-        blank=True, null=True,
-        verbose_name='Отчество'
     )
     phone_number = models.CharField(
         max_length=255,
@@ -49,7 +47,7 @@ class Person(models.Model):
     )
 
     def __str__(self):
-        return f"{self.first_name} -- {self.last_name}"
+        return self.fio
 
     class Meta:
         ordering = ('-id',)

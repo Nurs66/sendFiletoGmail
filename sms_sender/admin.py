@@ -4,9 +4,9 @@ from sms_sender.models import Person
 
 
 class PersonAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'phone_number', 'email')
-    list_filter = ('first_name', 'last_name', 'phone_number')
-    search_fields = ('first_name', 'last_name',)
+    list_display = ('fio', 'phone_number', 'email')
+    list_filter = ('fio', 'phone_number')
+    search_fields = ('fio',)
 
 
 admin.site.register(Person, PersonAdmin)
