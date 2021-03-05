@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 
 from core.celery import app
 
@@ -15,12 +15,19 @@ def send_info(
     Телефон: {phone_number}
     Почта: {email}
     Сообщение: {content}
-    Файл: {file}
-    
     """
-    send_mail(
+    email = EmailMessage(
         "Добро пожаловать в IT ACADEMY!",
         message, settings.EMAIL_HOST_USER,
         ['nursultandev@gmail.com', 'megabmx4477@gmail.com'],
-        fail_silently=False
     )
+    email.attach(file.url, file.read(), "application/octet-stream")
+    print(email)
+    email.send(fail_silently=False)
+
+    # send_mail(
+    #     "Добро пожаловать в IT ACADEMY!",
+    #     message, settings.EMAIL_HOST_USER,
+    #     ['nursultandev@gmail.com', 'megabmx4477@gmail.com'],
+    #     fail_silently=False
+    # )
