@@ -1,12 +1,5 @@
-from django.core.validators import RegexValidator
 from django.db import models
 
-phone_number_regex = RegexValidator(
-    regex=r'^(\+996)\d{9}$',
-    message=(
-        "Телефон должен быть в формате +996[код][номер]"
-    )
-)
 SERVICES = (
     ('Онлайн консультация юриста', 'Онлайн консультация юриста'),
     ('Онлайн консультация бухгалтера', 'Онлайн консультация бухгалтера'),
@@ -29,7 +22,6 @@ class Person(models.Model):
     phone_number = models.CharField(
         max_length=255,
         verbose_name='Телефон',
-        validators=[phone_number_regex],
         null=True, blank=True
     )
     email = models.EmailField(
