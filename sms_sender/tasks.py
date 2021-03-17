@@ -19,7 +19,7 @@ def send_info(
     email = EmailMessage(
         "Добро пожаловать в IT ACADEMY!",
         message, settings.EMAIL_HOST_USER,
-        ['nursultandev@gmail.com', 'megabmx4477@gmail.com'],
+        ['meerimsydygalieva93@gmail.com'],
     )
     email.attach(file.url, file.read(), "application/octet-stream")
     email.send(fail_silently=False)
